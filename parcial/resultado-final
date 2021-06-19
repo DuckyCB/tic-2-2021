@@ -1,0 +1,11 @@
+OK: Original = b'abc' - encriptado = b'abc' - Clave = 0
+OK: Original = b'abc' - encriptado = b'bca' - Clave = 1
+OK: Original = b'abc' - encriptado = b'cab' - Clave = 2
+OK: Original = b'abc' - encriptado = b'abc' - Clave = 3
+OK: Original = b'ABC' - encriptado = b'ABC' - Clave = 2
+OK: Original = b'abc' - encriptado = b'abc' - Clave = 888888888
+OK: Original = b'abc' - encriptado = b'def' - Clave = 3
+OK: Original = b'abc' - encriptado = b'"#$' - Clave = 753
+OK: Original = b'La perfeccion se logra no cuando no hay nada mas que anadir, sino cuando no hay nada mas que quitar. Antoine de Saint-Exuperi' - encriptado = b'y?>c]e^][[{ba>f]>~b_e?>ab>[h?a\\b>ab>`?l>a?\\?> ?f>dh]>?a?\\{e8>f{ab>[h?a\\b>ab>`?l>a?\\?> ?f>dh]>dh{g?e!>nagb{a]>\\]>F?{ag9rkhc]e{' - Clave = 28392
+OK: Original = b'La perfeccion se logra no cuando no hay nada mas que anadir, sino cuando no hay nada mas que quitar. Antoine de Saint-Exuperi' - encriptado = b'.-1[Db5Dmml)<1(D1*)8b-1<)1mM-<p)1<)1|-k1<-p-1w-(1NMD1-<-plbh1(l<)1mM-<p)1<)1|-k1<-p-1w-(1NMD1NMlF-b/1T<F)l<D1pD1z-l<FOCQM[Dbl' - Clave = 290365
+OK: Original = b'La perfeccion se logra no cuando no hay nada mas que anadir, sino cuando no hay nada mas que quitar. Antoine de Saint-Exuperi' - encriptado = b'Le tivjiggmsr wi pskve rs gyerhs rs lec rehe qew uyi erehmv, wmrs gyerhs rs lec rehe qew uyi uymxev. Arxsmri hi Semrx-Ebytivm' - Clave = 4

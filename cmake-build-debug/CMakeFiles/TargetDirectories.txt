@@ -1,0 +1,3 @@
+C:/Users/Ducky/projects/tic2/cmake-build-debug/CMakeFiles/tic2.dir
+C:/Users/Ducky/projects/tic2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Ducky/projects/tic2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
