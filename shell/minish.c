@@ -1,9 +1,8 @@
 #include "minish.h"
 #include "minish-func.h"
-#include "dir.h"
-#include "history.h"
 
-int globalstatret;
+
+int globalstatret = 0;
 
 
 int my_getline(char s[], int lim) {
@@ -39,11 +38,11 @@ int main() {
 
         argc = linea2argv(line, MAXARG, argv);
 
-        printf("argc: %d\n", argc);
-        for (int i = 0; i < argc; i++) {
-            printf("\nword: %s\nlen: %ld", argv[i], strlen(argv[i]));
-        }
-       // ejecutar(argc, argv);
+        // printf("argc: %d\n", argc);
+        // for (int i = 0; i < argc; i++) {
+        //     printf("\nword: %s\nlen: %ld\n", argv[i], strlen(argv[i]));
+        // }
+       ejecutar(argc, argv);
     }
 }
 

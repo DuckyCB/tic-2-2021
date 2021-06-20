@@ -12,13 +12,15 @@ int builtin_help (int argc, char **argv){
     }
 }
 
-int builtin_exit (int argc, char **argv){
-    if (argc == 2) {
-        exit(globalstatret);
-    } else {
-        exit(*argv[2]);
-    }
-}
+// int builtin_exit (int argc, char **argv){
+//     if (argc == 1) {
+//         exit(globalstatret);
+//     }
+
+    
+
+//     exit(*argv[1]);
+// }
 
 int builtin_pid (int argc, char **argv){
     printf("pid: %d, ppid: %d \n", getpid(), getppid());
