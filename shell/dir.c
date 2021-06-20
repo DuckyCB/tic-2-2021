@@ -1,4 +1,4 @@
-#include "dir.h"
+#include "minish.h"
 #include <dirent.h>
 #include <stdio.h>
 

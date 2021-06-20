@@ -47,8 +47,10 @@ int linea2argv(char *linea, int argc, char **argv) {
         }
     }
 
-    if (new_word == 1)
+    if (new_word == 1) {
+        word[wpos] = '\0';
         argv[nword++] = strdup(word);
+    }
 
     argv[nword] = NULL;
     return nword;
@@ -72,6 +74,28 @@ int linea2argv(char *linea, int argc, char **argv) {
 
 int ejecutar(int argc, char **argv) {
     int toReturn = 0;
+
+    if (argc == 0)
+        return 0;
+
+    // history file path
+    char path[MAXCWD];
+    *path = '\0';
+    strcat(path, getenv("HOME"));
+    strcat(path, "/");
+    strcat(path, HISTORY_FILE);
+
+    // append command to history file
+    FILE *fptr;
+    fptr = fopen(path,"a");
+    if (fptr == NULL)
+        fprintf(stderr, "Error: Failure trying to open history file\n");
+    else {
+        fprintf(fptr, "%s\n", argv[0]);
+        fclose(fptr);
+    }
+
+    // Execute command
     if (builtin_lookup(argv[0]) != NULL) {
         toReturn = (builtin_lookup(argv[0])->func)(argc, argv);      
     } else {
@@ -82,26 +106,29 @@ int ejecutar(int argc, char **argv) {
 }
 
 
+// Execute external command
 int externo(int argc, char **argv) {
+
     pid_t ch_pid = fork();
-    errno = 0;
+    int status = 0;
+
+
     // Child process creation unsuccessful
     if (ch_pid == -1) {
         perror("fork");
-    // Returned to the newly created child process
-    } else if (ch_pid == 0) {
+        return errno;
+    }
+    
+    // Child process
+    if (ch_pid == 0) {
         if (execvp(argv[0], argv) == -1) {
             perror("execve");
-            char cwd[200];
-            getcwd(cwd, sizeof(cwd));
-            printf("%s> ", cwd );
         }
         exit(0);
-    // Returned to parent or caller
-    } else { // ch_pid == 1
-        printf("spawn child with pid - %d\n", ch_pid);
-        return ch_pid;
     }
+
+    // Wait for child process to complete
+    waitpid(ch_pid, &status, 0);
 
     return errno;
 }

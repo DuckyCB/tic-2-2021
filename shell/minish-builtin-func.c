@@ -3,21 +3,17 @@
 
 int builtin_help (int argc, char **argv){
     struct builtin_struct *node;
-    if ((node = builtin_lookup(argv[1]))) {
-        printf("%s \n", node->help_txt);
-        return 0;
-    } else {
-        printf("No se encontró el comando %s \n", argv[1]);
-        return 1;
+    if (argc == 2){
+        if ((node = builtin_lookup(argv[1]))) {
+            printf("%s \n", node->help_txt);
+            return 0;
+        } else {
+            printf("No se encontró el comando %s \n", argv[1]);
+            return 1;
+        }
     }
-}
-
-int builtin_exit (int argc, char **argv){
-    if (argc == 2) {
-        exit(globalstatret);
-    } else {
-        exit(*argv[2]);
-    }
+    printf("Uso: help [cd|dir|exit|help|getenv|pid|setenv|status|uid|unsetenv]\n");
+    return 1;
 }
 
 int builtin_pid (int argc, char **argv){
@@ -57,6 +53,7 @@ int builtin_gid (int argc, char **argv){
         }
         printf("%d(%s), ", grp->gr_gid, grp->gr_name);
     }
+    return 0;
 }
 
 extern char **environ;
@@ -102,7 +99,7 @@ int builtin_unsetenv (int argc, char **argv){
             }
         }
     } else {
-        printf("Debe pasar al menos una variable de ambiente como argumento");
+        printf("Debe pasar al menos una variable de ambiente como argumento\n");
         return 1;
     }
     return toReturn;
@@ -116,8 +113,8 @@ int builtin_cd (int argc, char **argv){
         if(argv[1][0] != '/')
         {// true for the dir in cwd
             if(argv[1][0] == '-'){
-                chdir(getenv("OLDPWD"));
                 getcwd(cwd,sizeof(cwd));
+                chdir(getenv("OLDPWD"));
                 setenv("OLDPWD", cwd, 1);
                 return 0;
             }
