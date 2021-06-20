@@ -2,21 +2,6 @@
 #include <dirent.h>
 #include <stdio.h>
 
-/**
-* returns 1 if str is contained in long_str, 0 otherwise
-**/
-int contains(char *str, char *long_str) {
-
-    for (; *long_str != '\0'; long_str++) {
-        if (*str == *long_str)
-            str++;
-
-        if (*str == '\0')
-            return 1;
-    }
-
-    return !(*long_str - *str);
-}
 
 /**
 * print files in current directory. returns status
@@ -25,8 +10,8 @@ int builtin_dir(int argc, char **argv) {
 
     // check number of arguments
     if (argc > 2) {
-        fprintf(stderr, "Error: wrong number of arguments %d", argc - 1);
-        fprintf(stderr, "Usage: dir [name]");
+        fprintf(stderr, "Error: wrong number of arguments %d\n", argc - 1);
+        fprintf(stderr, "Use: dir [name]\n");
         return 1;
     }
 
@@ -52,7 +37,7 @@ int builtin_dir(int argc, char **argv) {
 
     // dir with name agrument passed
     while ((dir = readdir(d)) != NULL)
-        if (contains(argv[1], dir->d_name))
+        if (strstr(dir->d_name, argv[1]))
             printf("%s\n", dir->d_name);
 
     closedir(d);
