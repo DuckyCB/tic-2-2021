@@ -99,7 +99,7 @@ int builtin_unsetenv (int argc, char **argv){
             }
         }
     } else {
-        printf("Debe pasar al menos una variable de ambiente como argumento");
+        printf("Debe pasar al menos una variable de ambiente como argumento\n");
         return 1;
     }
     return toReturn;
