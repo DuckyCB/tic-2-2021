@@ -110,6 +110,8 @@ int ejecutar(int argc, char **argv) {
 int externo(int argc, char **argv) {
 
     pid_t ch_pid = fork();
+    int status = 0;
+
 
     // Child process creation unsuccessful
     if (ch_pid == -1) {
@@ -121,15 +123,13 @@ int externo(int argc, char **argv) {
     if (ch_pid == 0) {
         if (execvp(argv[0], argv) == -1) {
             perror("execve");
-            char cwd[200];
-            getcwd(cwd, sizeof(cwd));
-            // printf("%s> ", cwd );
         }
         exit(0);
-    // Returned to parent or caller
     }
 
-    fprintf(stderr, "spawn child with pid - %d\n", ch_pid);
+    // Wait for child process to complete
+    waitpid(ch_pid, &status, 0);
+
     return errno;
 }
 
