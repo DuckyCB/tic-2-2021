@@ -3,24 +3,18 @@
 
 int builtin_help (int argc, char **argv){
     struct builtin_struct *node;
-    if ((node = builtin_lookup(argv[1]))) {
-        printf("%s \n", node->help_txt);
-        return 0;
-    } else {
-        printf("No se encontró el comando %s \n", argv[1]);
-        return 1;
+    if (argc == 2){
+        if ((node = builtin_lookup(argv[1]))) {
+            printf("%s \n", node->help_txt);
+            return 0;
+        } else {
+            printf("No se encontró el comando %s \n", argv[1]);
+            return 1;
+        }
     }
+    printf("Uso: help [cd|dir|exit|help|getenv|pid|setenv|status|uid|unsetenv]\n");
+    return 1;
 }
-
-// int builtin_exit (int argc, char **argv){
-//     if (argc == 1) {
-//         exit(globalstatret);
-//     }
-
-    
-
-//     exit(*argv[1]);
-// }
 
 int builtin_pid (int argc, char **argv){
     printf("pid: %d, ppid: %d \n", getpid(), getppid());
@@ -59,6 +53,7 @@ int builtin_gid (int argc, char **argv){
         }
         printf("%d(%s), ", grp->gr_gid, grp->gr_name);
     }
+    return 0;
 }
 
 extern char **environ;

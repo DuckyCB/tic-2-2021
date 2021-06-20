@@ -1,7 +1,7 @@
 
 
 CC=gcc
-CFLAGS=
+CFLAGS=-Wall -Wextra -std=gnu99 -ggdb
 
 
 minish: minish.o minish-func.o minish-builtin-func.o dir.o exit.o history.o util.o
