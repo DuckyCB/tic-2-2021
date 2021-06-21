@@ -4,8 +4,6 @@
 int builtin_history(int argc, char **argv) {
 
     // line variables definitions
-    char *line;
-    size_t len;
     int nlinesread = 0;
     int ft, i = 0;
     int c;

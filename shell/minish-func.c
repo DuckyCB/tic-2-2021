@@ -26,19 +26,24 @@ struct builtin_struct * builtin_lookup(char *cmd) {
     return NULL;
 }
 
+/*
+Gets a line, splits it in words and counts them.
+*/
 int linea2argv(char *linea, int argc, char **argv) {
     int nword = 0;
-    char *word;
+    char word[MAXLINE];
     int new_word = 0;
     int i;
     int wpos = 0;
 
+    // Reads each char
     for (i = 0; linea[i] != '\0' && linea[i] != '\n' && nword < argc; i++) {
 
-
+        // Creates new word
         if (linea[i] != ' ' && linea[i] != '\t') {
             word[wpos++] = linea[i];
             new_word = 1;
+        // Adds char to existing word
         } else if (new_word == 1) {
             word[wpos] = '\0';
             wpos = 0;
@@ -55,7 +60,10 @@ int linea2argv(char *linea, int argc, char **argv) {
     argv[nword] = NULL;
     return nword;
 }
-
+/*
+Tries to execute internal command,
+executes external command otherwise.
+*/
 int ejecutar(int argc, char **argv) {
     int toReturn = 0;
 
@@ -92,15 +100,15 @@ int ejecutar(int argc, char **argv) {
 
 // Execute external command
 int externo(int argc, char **argv) {
+    UNUSED(argc);
 
     pid_t ch_pid = fork();
     int status = 0;
 
-
     // Child process creation unsuccessful
     if (ch_pid == -1) {
         perror("fork");
-        return errno;
+        return 1;
     }
     
     // Child process
@@ -108,12 +116,14 @@ int externo(int argc, char **argv) {
         if (execvp(argv[0], argv) == -1) {
             perror("execve");
         }
-        exit(0);
+        exit(EXIT_FAILURE);
     }
 
     // Wait for child process to complete
     waitpid(ch_pid, &status, 0);
+    if (WIFEXITED(status))
+        status = WEXITSTATUS(status);
 
-    return errno;
+    return status;
 }
 
