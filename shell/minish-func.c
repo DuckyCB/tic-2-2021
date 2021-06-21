@@ -73,7 +73,7 @@ int ejecutar(int argc, char **argv) {
     FILE *fptr;
     fptr = fopen(path,"a");
     if (fptr == NULL)
-        fprintf(stderr, "Error: Failure trying to open history file\n");
+        fprintf(stderr, "Error: Fallo al intentar abrir archivo de historial\n");
     else {
         fprintf(fptr, "%s\n", argv[0]);
         fclose(fptr);

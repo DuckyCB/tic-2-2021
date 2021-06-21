@@ -10,8 +10,8 @@ int builtin_dir(int argc, char **argv) {
 
     // check number of arguments
     if (argc > 2) {
-        fprintf(stderr, "Error: wrong number of arguments %d\n", argc - 1);
-        fprintf(stderr, "Use: dir [name]\n");
+        fprintf(stderr, "Error: cantidad incorrecta de argumentos %d\n", argc - 1);
+        fprintf(stderr, "Uso: dir [name]\n");
         return 1;
     }
 
@@ -21,7 +21,7 @@ int builtin_dir(int argc, char **argv) {
 
     // check if directory opened succesfully
     if (!d) {
-        fprintf(stderr, "Error: could not open directory: %s\n", argv[1]);
+        fprintf(stderr, "Error: no se pudo abrir el directorio: %s\n", argv[1]);
         return 1;
     }
 
