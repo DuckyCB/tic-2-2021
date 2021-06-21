@@ -4,7 +4,6 @@
 
 int globalstatret = 0;
 
-
 int my_getline(char s[], int lim) {
 	int c, i;
 	for(i = 0; i < lim-1 && (c = getchar()) != EOF && c != '\n'; i++){
@@ -42,10 +41,6 @@ int main() {
 
         argc = linea2argv(line, MAXARG, argv);
 
-        // printf("argc: %d\n", argc);
-        // for (int i = 0; i < argc; i++) {
-        //     printf("\nword: %s\nlen: %ld\n", argv[i], strlen(argv[i]));
-        // }
         ejecutar(argc, argv);
     }
 }

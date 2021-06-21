@@ -99,7 +99,7 @@ int builtin_unsetenv (int argc, char **argv){
             }
         }
     } else {
-        printf("Debe pasar al menos una variable de ambiente como argumento");
+        printf("Debe pasar al menos una variable de ambiente como argumento\n");
         return 1;
     }
     return toReturn;
@@ -113,8 +113,8 @@ int builtin_cd (int argc, char **argv){
         if(argv[1][0] != '/')
         {// true for the dir in cwd
             if(argv[1][0] == '-'){
-                chdir(getenv("OLDPWD"));
                 getcwd(cwd,sizeof(cwd));
+                chdir(getenv("OLDPWD"));
                 setenv("OLDPWD", cwd, 1);
                 return 0;
             }
