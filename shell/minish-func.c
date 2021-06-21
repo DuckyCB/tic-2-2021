@@ -54,22 +54,6 @@ int linea2argv(char *linea, int argc, char **argv) {
 
     argv[nword] = NULL;
     return nword;
-
-    // for (int n=0; linea[n] != '\n' && linea[n] != '\0'; n++) {
-    //     // Fin de palabra (verifica que haya una palabra antes)
-    //     if ((linea[n] == ' ' || linea[n] == '\t') && first_word == 1) {
-            
-    //         *(argv + nword++) = word;
-    //         word = NULL;
-    //     } else {
-    //         c = (linea[n] == '\'' || linea[n] == '\"') ?  ' ' : linea[n]; 
-    //         *word++ = c;
-    //         first_word = 1;
-    //     }
-    // }
-    // argc = nword;
-    // *(argv + nword) = NULL;
-    // return nword;
 }
 
 int ejecutar(int argc, char **argv) {

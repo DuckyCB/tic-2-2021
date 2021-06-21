@@ -4,6 +4,15 @@
 
 int globalstatret = 0;
 
+// Frees argv memory
+void my_free(char **argv) {
+
+    int i;
+
+    for (i = 0; argv[i] != NULL; i++)
+        free(argv[i]);
+}
+
 int my_getline(char s[], int lim) {
 	int c, i;
 	for(i = 0; i < lim-1 && (c = getchar()) != EOF && c != '\n'; i++){
@@ -42,6 +51,7 @@ int main() {
         argc = linea2argv(line, MAXARG, argv);
 
         ejecutar(argc, argv);
+        my_free(argv);
     }
 }
 
