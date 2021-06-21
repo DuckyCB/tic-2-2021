@@ -1,17 +1,9 @@
 #include "minish.h"
 #include "minish-func.h"
+#include "util.h"
 
 
 int globalstatret = 0;
-
-// Frees argv memory
-void my_free(char **argv) {
-
-    int i;
-
-    for (i = 0; argv[i] != NULL; i++)
-        free(argv[i]);
-}
 
 int my_getline(char s[], int lim) {
 	int c, i;
@@ -35,7 +27,6 @@ void intHandler(){
 
 int main() {
     signal(SIGINT, intHandler);
-    int len = 0;
     int argc = 0;
     char *argv[MAXARG];
     char line[MAXLINE];
@@ -46,7 +37,7 @@ int main() {
         getcwd(cwd,sizeof(cwd));
 
         fprintf(stderr, "(minish) (%s):%s> ",pws->pw_name, cwd);
-        len = my_getline(line, MAXLINE);
+        my_getline(line, MAXLINE);
 
         argc = linea2argv(line, MAXARG, argv);
 

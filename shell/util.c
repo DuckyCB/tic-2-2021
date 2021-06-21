@@ -18,3 +18,12 @@ int my_isinteger(char *str) {
     
     return !zero_length;
 }
+
+// Frees argv memory
+void my_free(char **argv) {
+
+    int i;
+
+    for (i = 0; argv[i] != NULL; i++)
+        free(argv[i]);
+}
