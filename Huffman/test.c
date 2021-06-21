@@ -80,9 +80,7 @@ void swapMinHeapNode(struct MinHeapNode** a,
 }
 
 // The standard minHeapify function.
-void minHeapify(struct MinHeap* minHeap, int idx)
-
-{
+void minHeapify(struct MinHeap* minHeap, int idx) {
 
 	int smallest = idx;
 	int left = 2 * idx + 1;
@@ -131,9 +129,7 @@ struct MinHeapNode* extractMin(struct MinHeap* minHeap)
 // A utility function to insert
 // a new node to Min Heap
 void insertMinHeap(struct MinHeap* minHeap,
-				struct MinHeapNode* minHeapNode)
-
-{
+				struct MinHeapNode* minHeapNode) {
 
 	++minHeap->size;
 	int i = minHeap->size - 1;
@@ -150,9 +146,7 @@ void insertMinHeap(struct MinHeap* minHeap,
 }
 
 // A standard function to build min heap
-void buildMinHeap(struct MinHeap* minHeap)
-
-{
+void buildMinHeap(struct MinHeap* minHeap) {
 
 	int n = minHeap->size - 1;
 	int i;
@@ -162,8 +156,7 @@ void buildMinHeap(struct MinHeap* minHeap)
 }
 
 // A utility function to print an array of size n
-void printArr(int arr[], int n)
-{
+void printArr(int arr[], int n) {
 	int i;
 	for (i = 0; i < n; ++i)
 		printf("%d", arr[i]);
@@ -172,9 +165,7 @@ void printArr(int arr[], int n)
 }
 
 // Utility function to check if this node is leaf
-int isLeaf(struct MinHeapNode* root)
-
-{
+int isLeaf(struct MinHeapNode* root) {
 
 	return !(root->left) && !(root->right);
 }
