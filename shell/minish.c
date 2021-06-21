@@ -5,6 +5,7 @@
 
 int globalstatret = 0;
 
+// reads line
 int my_getline(char s[], int lim) {
 	int c, i;
 	for(i = 0; i < lim-1 && (c = getchar()) != EOF && c != '\n'; i++){
@@ -21,6 +22,7 @@ int my_getline(char s[], int lim) {
 	return i;
 }
 
+//ctrl + c Handling (SIGINT). Prints
 void intHandler(){
     printf("\nInterrupt! Presiona enter\n");
 }
