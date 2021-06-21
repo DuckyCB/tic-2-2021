@@ -21,7 +21,7 @@ int my_getline(char s[], int lim) {
 }
 
 void intHandler(){
-    printf("\nInterrupt! Press enter\n");
+    printf("\nInterrupt! Presiona enter\n");
 }
 
 int main() {
@@ -44,6 +44,3 @@ int main() {
         ejecutar(argc, argv);
     }
 }
-
-
-

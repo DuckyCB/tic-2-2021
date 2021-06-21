@@ -64,7 +64,7 @@ int builtin_getenv (int argc, char **argv){
             if (getenv(argv[i])){
                 printf("%s = %s\n", argv[i], getenv(argv[i]));
             } else {
-                fprintf(stderr,"Error getting environment variable \"%s\": %d\n", argv[i], errno);
+                fprintf(stderr,"Error obteniendo variable de ambiente \"%s\": %d\n", argv[i], errno);
                 toReturn = 1;
             }
         }
@@ -78,8 +78,8 @@ int builtin_getenv (int argc, char **argv){
 
 int builtin_setenv(int argc, char **argv) {
     if (argc != 3) {
-        printf("error: wrong number of arguments\n");
-        printf("usage: setenv var val\n");
+        printf("Error: cantidad incorrecta de argumentos\n");
+        printf("Use: setenv var val\n");
         return 1;
     }
     
