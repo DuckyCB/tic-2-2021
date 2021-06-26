@@ -1,3 +1,5 @@
+#include "huffman.h"
+
 extern Heap * new_empty_treenode_heap(int capacity);
 extern int is_leaf(Treenode *tn);
 extern int treenode_min_compare(const void *p, const void *q);

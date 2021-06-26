@@ -32,15 +32,12 @@
 
 #include "heap_generic.h"
 
-void
-swap_heap_elem(void *heapbase, size_t heaplen, size_t size, size_t i, size_t j)
 /*
  * función que intercambia elementos i y j de un array
  * que comienza en la dirección heapbase con heaplen elementos de tamaño size
  * El array empieza en índice 0 que es lo estándar en lenguaje C.
- *
  */
-{
+void swap_heap_elem(void *heapbase, size_t heaplen, size_t size, size_t i, size_t j) {
     char *p, *q, temp;
 
     // procede solamente si i y j están en el rango correcto
@@ -55,18 +52,15 @@ swap_heap_elem(void *heapbase, size_t heaplen, size_t size, size_t i, size_t j)
     }
 }
 
-void
-heap_bubbleup(void *heapbase, size_t heaplen, size_t size, size_t i,
-                int (*compare)(const void *, const void *))
+
 /*
  * función que ejecuta algoritmo estándar de inserción de UN elemento
  * se supone que el array del heap comienza en la dirección heapbase
  * con heaplen elementos de tamaño size y usa la función compare
  * para comparar elementos del array
  * El array empieza en índice 0 que es lo estándar en lenguaje C.
- *
  */
-{
+void heap_bubbleup(void *heapbase, size_t heaplen, size_t size, size_t i, int (*compare)(const void *, const void *)) {
     size_t parent = (i - 1) / 2;   // división entera
 
     if (i >= heaplen)
@@ -80,18 +74,15 @@ heap_bubbleup(void *heapbase, size_t heaplen, size_t size, size_t i,
     }
 }
 
-void
-heap_bubbledown(void *heapbase, size_t heaplen, size_t size, size_t i,
-                int (*compare)(const void *, const void *))
+
 /*
  * función que ejecuta algoritmo estándar de heapify o "bubbledown"
  * se supone que el array del heap comienza en la dirección heapbase
  * con heaplen elementos de tamaño size y usa la función compare
  * para comparar elementos del array
  * El array empieza en índice 0 que es lo estándar en lenguaje C.
- *
  */
-{
+void heap_bubbledown(void *heapbase, size_t heaplen, size_t size, size_t i, int (*compare)(const void *, const void *)) {
     size_t left = 2*i + 1;
     size_t right = 2*i + 2;
     size_t minmax = i; // en minheap sería 'lowest' y en maxheap sería 'largest'
@@ -111,18 +102,15 @@ heap_bubbledown(void *heapbase, size_t heaplen, size_t size, size_t i,
     }
 }
 
-void
-build_heap(void *heapbase, size_t heaplen, size_t size,
-                int (*compare)(const void *, const void *))
+
 /*
  * función que ejecuta algoritmo estándar para crear un heap
  * se supone que el array del heap comienza en la dirección heapbase
  * con heaplen elementos de tamaño size y usa la función compare
  * para comparar elementos del array
  * El array empieza en índice 0 que es lo estándar en lenguaje C.
- *
  */
-{
+void build_heap(void *heapbase, size_t heaplen, size_t size, int (*compare)(const void *, const void *)) {
     int i;
 
     for (i=heaplen/2; i >= 0; i--) {

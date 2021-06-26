@@ -44,16 +44,14 @@ typedef struct symcode {            // 8 bytes para cada símbolo existente en l
  * La estructura de un nodo del árbol, que tendrá dos formas de acceso:
  * Una es un array accedido como un heap.
  * La otra es como un árbol, para lo cual están los punteros a sus hijos.
- *
  */
 typedef struct treenode {
-    struct symcode *code;       // si es hoja, todos los datos del símbolo
+    struct symcode *code;           // si es hoja, todos los datos del símbolo
     struct treenode *children[2];   // Si es interno, punteros a hijos (0=izq, 1=der)
 } Treenode;
 
 /*
  * La estructura de un heap para almacenar los nodos del árbol
- *
  */
 typedef struct heap {
     int capacity;           // la capacidad máxima de elementos de este heap
